@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kembang-pink: #FF7CCE;
+  --color-kembang-lime: #DDE68D;
+  --color-kembang-cream: #FFF5E5;
+  --color-kembang-green: #6CA623;
+  --color-kembang-dark: #1C1C1C;
+  --font-sans: 'Outfit', sans-serif;
+  --font-accent: 'Great Vibes', cursive;
+}
+
+body {
+  @apply bg-kembang-cream text-kembang-dark font-sans antialiased selection:bg-kembang-pink selection:text-white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
