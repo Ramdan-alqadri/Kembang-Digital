@@ -21,7 +21,7 @@ export function Problem() {
   ];
 
   return (
-    <section className="h-screen pt-20 pb-8 bg-white flex flex-col justify-center snap-start shrink-0 overflow-hidden">
+    <section className="min-h-[100dvh] pt-20 pb-8 bg-white flex flex-col justify-center snap-start shrink-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="max-w-3xl mb-12 md:mb-16">
           <motion.h2 

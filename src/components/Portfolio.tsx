@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigation } from '../context/NavigationContext';
 
 export function Portfolio() {
+  const { navigate } = useNavigation();
   const projects = [
     {
       slug: "ecoslip",
@@ -37,7 +38,7 @@ export function Portfolio() {
   ];
 
   return (
-    <section id="works" className="h-screen pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
+    <section id="works" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <motion.div
@@ -54,18 +55,18 @@ export function Portfolio() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Link
-              to="/works"
+            <a
+              href="#works"
+              onClick={(e) => { e.preventDefault(); navigate('works'); }}
               className="inline-flex items-center gap-2 text-kembang-pink hover:text-white transition-colors pb-1 border-b border-kembang-pink/30 hover:border-white font-medium"
             >
               Lihat Semua Karya <ArrowUpRight size={18} />
-            </Link>
+            </a>
           </motion.div>
         </div>
-
         <div className="grid md:grid-cols-3 gap-6">
           {projects.slice(0, 3).map((project, i) => (
-            <Link key={i} to={`/works/${project.slug}`}>
+            <a key={i} href={`#works-${project.slug}`} onClick={(e) => { e.preventDefault(); navigate('work-detail', project.slug); }}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +101,7 @@ export function Portfolio() {
                   </div>
                 </div>
               </motion.div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>

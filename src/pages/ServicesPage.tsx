@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { useNavigation } from '../context/NavigationContext';
 
 export function ServicesPage() {
+  const { navigate } = useNavigation();
   const services = [
     {
       stage: "SEED",
@@ -77,9 +78,9 @@ export function ServicesPage() {
       </div>
       <div className="mt-16 text-center">
         <p className="text-xl text-kembang-dark/70 mb-6">Bingung mulai dari mana? Mari kita diskusikan bersama.</p>
-        <Link to="/contact" className="inline-flex items-center gap-2 bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors">
+        <a href="#contact" onClick={(e) => { e.preventDefault(); navigate('contact'); }} className="inline-flex items-center gap-2 bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors">
           Konsultasi Gratis <span>→</span>
-        </Link>
+        </a>
       </div>
     </div>
   );

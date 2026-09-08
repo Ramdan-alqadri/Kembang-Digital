@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigation } from '../context/NavigationContext';
 import { Logo } from './Logo';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const location = useLocation();
-  const navigate = useNavigate();
+  const { view, navigate } = useNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
       // Simple active section detection for homepage
-      if (location.pathname === '/') {
+      if (view === 'home') {
         const sections = ['home', 'services', 'works', 'about', 'contact'];
         let current = 'home';
         for (const section of sections) {
@@ -30,20 +29,7 @@ export function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    // Handle scrolling when navigating to /#hash from another page
-    if (location.pathname === '/' && location.hash) {
-      const id = location.hash.replace('#', '');
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else if (!location.hash) {
-      // Always scroll to top when navigating to a new page without a hash
-      window.scrollTo(0, 0);
-    }
-  }, [location]);
+  }, [view]);
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -57,17 +43,19 @@ export function Navbar() {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
-    if (location.pathname === '/') {
+    if (view === 'home') {
       if (href === '#home') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        navigate('/');
       } else {
         const id = href.replace('#', '');
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-        navigate(`/${href}`, { replace: true });
       }
     } else {
-      navigate(`/${href}`);
+      if (href === '#home') {
+        navigate('home');
+      } else {
+        navigate('home', href);
+      }
     }
   };
 
@@ -85,9 +73,9 @@ export function Navbar() {
               : 'bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-8'
           }`}
         >
-          <Link to="/" onClick={(e) => handleNavClick(e, '#home')} className="group shrink-0">
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('home'); }} className="group shrink-0">
             <Logo className="h-7 md:h-9 transition-transform group-hover:scale-105" dark={false} />
-          </Link>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -95,10 +83,10 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a 
-                    href={`/${link.href}`}
+                    href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`transition-colors ${
-                      location.pathname === '/' && activeSection === link.href.replace('#', '') 
+                      view === 'home' && activeSection === link.href.replace('#', '') 
                         ? 'text-kembang-pink font-semibold' 
                         : 'hover:text-kembang-pink'
                     }`}
@@ -109,7 +97,7 @@ export function Navbar() {
               ))}
             </ul>
             <a
-              href="/#contact"
+              href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
               className="bg-kembang-dark text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-kembang-pink transition-colors"
             >
@@ -164,10 +152,10 @@ export function Navbar() {
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
-                    href={`/${link.href}`}
+                    href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`text-xl font-medium py-4 border-b border-kembang-dark/5 ${
-                      location.pathname === '/' && activeSection === link.href.replace('#', '') 
+                      view === 'home' && activeSection === link.href.replace('#', '') 
                         ? 'text-kembang-pink' 
                         : 'text-kembang-dark hover:text-kembang-pink transition-colors'
                     }`}
@@ -176,7 +164,7 @@ export function Navbar() {
                   </a>
                 ))}
                 <a
-                  href="/#contact"
+                  href="#contact"
                   onClick={(e) => handleNavClick(e, '#contact')}
                   className="bg-kembang-dark text-white px-6 py-4 rounded-xl text-center font-bold mt-6 hover:bg-kembang-pink transition-colors shadow-sm"
                 >

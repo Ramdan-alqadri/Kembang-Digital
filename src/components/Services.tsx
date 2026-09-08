@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
+import { useNavigation } from '../context/NavigationContext';
 
 export function Services() {
+  const { navigate } = useNavigation();
   const services = [
     {
       stage: "SEED",
@@ -29,7 +31,7 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="h-screen pt-20 pb-8 bg-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
+    <section id="services" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-6">
           <motion.h2 
@@ -41,7 +43,6 @@ export function Services() {
             Apa yang bisa kita kembangkan?
           </motion.h2>
         </div>
-
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((srv, i) => (
             <motion.div
@@ -78,7 +79,6 @@ export function Services() {
             </motion.div>
           ))}
         </div>
-
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export function Services() {
           transition={{ delay: 0.4 }}
           className="mt-10 flex justify-center"
         >
-          <a href="/services" className="inline-flex items-center justify-center bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors gap-2">
+          <a href="#services-page" onClick={(e) => { e.preventDefault(); navigate('services'); }} className="inline-flex items-center justify-center bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors gap-2">
             Lihat Semua Layanan <span>→</span>
           </a>
         </motion.div>

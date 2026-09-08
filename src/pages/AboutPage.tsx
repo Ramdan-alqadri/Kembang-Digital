@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { useNavigation } from '../context/NavigationContext';
 
 export function AboutPage() {
+  const { navigate } = useNavigation();
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
@@ -31,9 +32,9 @@ export function AboutPage() {
         </div>
       </div>
       <div className="mt-16">
-        <Link to="/contact" className="inline-flex items-center gap-2 bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors">
+        <a href="#contact" onClick={(e) => { e.preventDefault(); navigate('contact'); }} className="inline-flex items-center gap-2 bg-kembang-dark text-white px-8 py-4 rounded-full font-medium hover:bg-kembang-pink transition-colors">
           Mari Tumbuh Bersama <span>→</span>
-        </Link>
+        </a>
       </div>
     </div>
   );
