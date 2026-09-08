@@ -5,7 +5,7 @@ export function About() {
   const { navigate } = useNavigation();
   
   return (
-    <section id="about" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
+    <section id="about" className="min-h-screen pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden  ">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <motion.div

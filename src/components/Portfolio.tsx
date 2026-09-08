@@ -38,7 +38,7 @@ export function Portfolio() {
   ];
 
   return (
-    <section id="works" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
+    <section id="works" className="min-h-screen pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden  ">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <motion.div

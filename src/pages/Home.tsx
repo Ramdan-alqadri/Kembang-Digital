@@ -10,13 +10,6 @@ import { Process } from '../components/Process';
 import { TrustAndCta } from '../components/TrustAndCta';
 
 export function Home() {
-  useEffect(() => {
-    document.documentElement.style.scrollSnapType = 'y mandatory';
-    return () => {
-      document.documentElement.style.scrollSnapType = '';
-    };
-  }, []);
-
   return (
     <>
       {/* 1. HOME */}

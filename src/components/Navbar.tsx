@@ -73,7 +73,7 @@ export function Navbar() {
               : 'bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-8'
           }`}
         >
-          <a href="/" onClick={(e) => { e.preventDefault(); navigate('home'); }} className="group shrink-0">
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('home'); }} className="group ">
             <Logo className="h-7 md:h-9 transition-transform group-hover:scale-105" dark={false} />
           </a>
 
@@ -107,7 +107,7 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-kembang-dark shrink-0 p-1"
+            className="md:hidden text-kembang-dark  p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <Menu size={24} />

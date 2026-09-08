@@ -2,7 +2,7 @@ import { Logo } from './Logo';
 
 export function Footer() {
   return (
-    <footer className="bg-kembang-dark text-kembang-cream py-16 snap-end">
+    <footer className="bg-kembang-dark text-kembang-cream py-16 ">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">

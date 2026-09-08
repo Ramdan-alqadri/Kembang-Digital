@@ -4,7 +4,7 @@ import { useNavigation } from '../context/NavigationContext';
 export function TrustAndCta() {
   const { navigate } = useNavigation();
   return (
-    <section id="contact" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-pink relative overflow-hidden flex flex-col justify-center snap-start shrink-0">
+    <section id="contact" className="min-h-screen pt-20 pb-8 bg-kembang-pink relative overflow-hidden flex flex-col justify-center  ">
       <svg className="absolute top-0 right-0 w-96 h-96 text-white opacity-10 translate-x-1/3 -translate-y-1/3" viewBox="0 0 200 200" fill="currentColor">
         <path d="M100,20 C140,20 180,60 180,100 C180,140 140,180 100,180 C60,180 20,140 20,100 C20,60 60,20 100,20 Z" />
       </svg>

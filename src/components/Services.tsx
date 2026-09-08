@@ -31,7 +31,7 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="min-h-[100dvh] pt-20 pb-8 bg-kembang-cream flex flex-col justify-center overflow-hidden snap-start shrink-0">
+    <section id="services" className="min-h-screen pt-20 pb-8 bg-kembang-cream flex flex-col justify-center overflow-hidden  ">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-6">
           <motion.h2 
