@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { NavigationProvider, useNavigation } from './context/NavigationContext';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
@@ -10,6 +12,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { WorksPage } from './pages/WorksPage';
 import { ContactPage } from './pages/ContactPage';
+import { SplashScreen } from './components/SplashScreen';
 
 const ProjectDetailPage = () => {
   const { id } = useNavigation();
@@ -47,9 +50,16 @@ function Router() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
-    <NavigationProvider>
-      <Router />
-    </NavigationProvider>
+    <>
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      </AnimatePresence>
+      <NavigationProvider>
+        <Router />
+      </NavigationProvider>
+    </>
   );
 }

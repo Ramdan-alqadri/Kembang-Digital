@@ -51,9 +51,9 @@ export function Problem() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i }}
-              className="bg-kembang-cream p-6 md:p-8 rounded-3xl group hover:bg-kembang-lime/20 transition-colors"
+              className="bg-white border border-kembang-pink/40 shadow-sm p-6 md:p-8 rounded-3xl group hover:border-kembang-pink hover:shadow-md transition-all"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center mb-4 md:mb-6 text-kembang-pink shadow-sm">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-kembang-pink/10 rounded-full flex items-center justify-center mb-4 md:mb-6 text-kembang-pink shadow-sm">
                 <span className="font-bold">{i + 1}</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-kembang-dark mb-2 md:mb-3 leading-snug">

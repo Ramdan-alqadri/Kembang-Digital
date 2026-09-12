@@ -1,6 +1,20 @@
 import { motion } from 'motion/react';
 
 export function ContactPage() {
+  const handleWhatsAppSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const nama = formData.get('Nama') as string;
+    const kontak = formData.get('Kontak') as string;
+    const pesan = formData.get('Pesan') as string;
+
+    const text = `Halo Kembang Digital,\n\nNama: ${nama}\nKontak: ${kontak}\nPesan: ${pesan}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/6281907087886?text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-16">
@@ -27,21 +41,21 @@ export function ContactPage() {
         </motion.div>
         
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-kembang-dark/5">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-kembang-dark mb-2">Nama Kamu / Bisnis</label>
-              <input type="text" className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Cth. Budi / Kopi Susu Kita" />
+              <input type="text" name="Nama" required className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Cth. Budi / Kopi Susu Kita" />
             </div>
             <div>
               <label className="block text-sm font-bold text-kembang-dark mb-2">Email / WhatsApp</label>
-              <input type="text" className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Email atau nomor WhatsApp yang bisa dihubungi" />
+              <input type="text" name="Kontak" required className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Email atau nomor WhatsApp yang bisa dihubungi" />
             </div>
             <div>
               <label className="block text-sm font-bold text-kembang-dark mb-2">Ceritakan kebutuhanmu</label>
-              <textarea rows={4} className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Cth. Butuh dibantu kelola sosial media..."></textarea>
+              <textarea name="Pesan" required rows={4} className="w-full bg-kembang-cream/30 border border-kembang-dark/10 rounded-xl px-4 py-3 focus:outline-none focus:border-kembang-pink transition-colors" placeholder="Cth. Butuh dibantu kelola sosial media..."></textarea>
             </div>
-            <button className="w-full bg-kembang-dark text-white hover:bg-kembang-pink rounded-xl py-4 font-bold transition-colors shadow-md">
-              Kirim Pesan
+            <button type="submit" className="w-full bg-kembang-dark text-white hover:bg-kembang-pink rounded-xl py-4 font-bold transition-colors shadow-md flex items-center justify-center gap-2">
+              Kirim Pesan ke WhatsApp 📱
             </button>
           </form>
         </motion.div>

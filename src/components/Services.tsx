@@ -9,7 +9,7 @@ export function Services() {
       subtitle: "Build the Foundation",
       items: ["Brand Identity", "Content Strategy", "Social Media Setup", "Digital Strategy"],
       desc: "Memahami bisnis, menemukan arah, dan membangun fondasi digital.",
-      color: "bg-kembang-cream",
+      color: "bg-white",
       accent: "text-kembang-green"
     },
     {
