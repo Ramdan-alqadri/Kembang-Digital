@@ -5,14 +5,14 @@ export function About() {
   const { navigate } = useNavigation();
   
   return (
-    <section id="about" className="min-h-screen pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden  ">
+    <section id="about" className="min-h-screen pt-20 pb-8 bg-kembang-dark text-kembang-cream flex flex-col justify-center overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="order-2 md:order-1 relative hidden md:block"
+            className="order-1 md:order-1 relative" // Changed from hidden md:block to show on mobile too
           >
             {/* Logo Animation Visual via Video */}
             <div className="relative w-full aspect-square md:aspect-[4/3] bg-white rounded-3xl overflow-hidden flex items-center justify-center shadow-2xl">
@@ -28,8 +28,8 @@ export function About() {
               </video>
             </div>
             
-            <div className="absolute -bottom-4 -right-4 bg-kembang-pink text-white p-4 rounded-full w-24 h-24 flex items-center justify-center rotate-12 shadow-xl">
-              <span className="font-accent text-lg text-center leading-tight">Your Digital Growth Partner</span>
+            <div className="absolute -bottom-4 -right-4 bg-kembang-pink text-white p-4 rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rotate-12 shadow-xl">
+              <span className="font-accent text-sm md:text-lg text-center leading-tight">Your Digital Growth Partner</span>
             </div>
           </motion.div>
           
@@ -37,7 +37,7 @@ export function About() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="order-1 md:order-2"
+            className="order-2 md:order-2"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Kenalan dengan Kembang.</h2>
             <p className="text-lg leading-relaxed text-kembang-cream/80 mb-8">
